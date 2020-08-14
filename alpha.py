@@ -43,13 +43,18 @@ def topic_cp(flag):
         link_text = list()
 
         for para in soup.find_all('p'):
-             link_text.append(para.get_text())
+             sentences=para.get_text().split('.')
+             link_text.extend(sentences)
+
+        print(link_text)
 
         for x in range(len(link_text)-1,-1,-1):
             if link_text[x] == '\n':
                 link_text.pop(x)
 
         tokenized_source = tokenizeText(link_text)
+
+        print(link_text)
 
         print('\n1. Enter file path')
         print('2. Browse file')
@@ -66,7 +71,7 @@ def topic_cp(flag):
         if os.path.isfile(filename):
             f = open(filename,encoding="utf8")
             file = f.read()
-            file = file.split('\n')
+            file = file.split('.')
             tokenized_file = tokenizeText(file)
 
             print(bag_of_words(tokenized_file,tokenized_source))
