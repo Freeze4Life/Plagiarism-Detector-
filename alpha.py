@@ -8,7 +8,7 @@ tokenizer = nltk.RegexpTokenizer(r"\w+")
 
 def tokenizeText(paralist):
     '''Converts list of paragraphs/texts into list of tokenized paragraphs'''
-    
+
     tokenized_text = list()
     for x in range(len(paralist)):
         if paralist[x]!=[]:
@@ -31,7 +31,7 @@ def menu():
 
 def topic_cp(flag):
     ''' Checks for copy&paste type of plagiarism for the given document
-        by comparing with texts/data from the given sources/links''' 
+        by comparing with texts/data from the given sources/links'''
 
     topic=input('Enter the topic: ')
     for link in links:
@@ -70,7 +70,7 @@ def bag_of_words(file,source):
 
     for para in file:
         dict_file.append({word: para.count(word) for word in set(para)})
-    
+
     for para in source:
         dict_source.append({word: para.count(word) for word in set(para)})
 
@@ -84,8 +84,8 @@ def bag_of_words(file,source):
 
             for word in p1_dict.keys():
                 if word in p2_dict.keys():
-                    words_matched = words_matched+p1_dict[word] if p1_dict[word] <= p2_dict[word] else words_matched+p2_dict[word] 
-            
+                    words_matched = words_matched+p1_dict[word] if p1_dict[word] <= p2_dict[word] else words_matched+p2_dict[word]
+
             score = words_matched/total_words
 
             if score > max_score:
@@ -94,7 +94,7 @@ def bag_of_words(file,source):
 
     plagiarism_score = (sum(score_list)/len(score_list)) * 100
     #Deleted some text from the last paragraph of dragons.txt to check for change in plagiarsim score
-    
+
     return round(plagiarism_score,3)
 
 
