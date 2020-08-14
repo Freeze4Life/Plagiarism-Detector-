@@ -68,3 +68,5 @@ def fileSelector():
             print("\nOpening " + curr_folder + "\n")
         else:
             print("\nSelected " + curr_folder + "\n")
+    
+    return curr_folder
